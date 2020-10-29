@@ -1,0 +1,14 @@
+{
+    "mongoUri": "mongodb://localhost/grotesk_pc",
+    "appPort": 3000,
+    "secret": "we_opeji",
+    "jwt": {
+        "secret": "we_opeji",
+        "tokens": {
+            "access": {
+                "type": "access",
+                "expiresIn": "43800m"
+            }
+        }
+    }
+}
