@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const { secret, tokens }    = require('../config.json').jwt;
+const { tokens }    = require('../config.json').jwt;
+const { secret }    = require('../config.json');
 const mongoose = require('mongoose');
 
 

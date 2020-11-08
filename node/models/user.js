@@ -6,7 +6,7 @@ const UserShema = new mongoose.Schema({
     phone: String,
     password: String,
     img: String,
-    messages: Array,
+    friends: Array,
 });
 
 mongoose.model('User', UserShema);
