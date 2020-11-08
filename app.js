@@ -34,6 +34,15 @@ app.get('/', function (req, res, next) {
 });
 
 
+const urlencodedParser = bodyParser.urlencoded({extended: false});
+app.post("/github", urlencodedParser, function (request, response) {
+    if(!request.body) return response.sendStatus(400);
+    console.log(request.body);
+    response.send(request.body);
+});
+
+
+
 var registration_html   = null;
 var messenger_html      = null;
 
