@@ -1,6 +1,6 @@
 {
-    "mongoUri":"mongodb://admin:135315Ab135315@192.168.0.13:27017/",
-    "coment": "mongodb://127.0.0.1:27017/",
+    "cooment":"mongodb://admin:135315Ab135315@192.168.0.13:27017/",
+    "mongoUri": "mongodb://127.0.0.1:27017/",
     "appPort": 3000,
     "secret": "we_opeji",
     "jwt": {

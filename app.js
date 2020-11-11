@@ -30,7 +30,7 @@ mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(bodyParser.json())
 
 app.get('/', function (req, res, next) {
-    res.send('Default page');
+    res.send('Default page git');
 });
 
 var registration_html   = null;
