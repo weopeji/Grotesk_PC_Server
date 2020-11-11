@@ -1,5 +1,3 @@
-//mesendger
-
 const express                       = require('express');
 const mongoose                      = require('mongoose');
 const bodyParser                    = require('body-parser');
@@ -11,7 +9,7 @@ const models                        = require('./models');
 const mkdirp                        = require('mkdirp');
 const { memory }                    = require('console');
 var fs                              = require('fs');
-
+const path                          = require('path')
 
 const io 	        = require('socket.io')();
 const server_http   = require('http').createServer(app);
@@ -31,8 +29,10 @@ mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(bodyParser.json())
 
-app.get('/', function (req, res, next) {
-    res.send('Default page git');
+app.use(express.static('public'));
+app.get('/', function (req, res) {
+    res.status(200)
+    res.sendFile(path.resolve(__dirname + '/public/', 'index.html'));
 });
 
 var registration_html   = null;
@@ -80,11 +80,11 @@ var messenger_page = function messenger_page(socket,data,callback)
 }
 
 io.attach(server_http);
-
 var all_users = new Array();
-
 io.on('connection', function(socket) 
 {
+    console.log('|| Connect user ||');
+
     if(typeof socket.handshake.query.token != "undefined") {
         const userId = jwt.verify(socket.handshake.query.token, secret).userId;
         all_users.push({
