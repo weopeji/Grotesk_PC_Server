@@ -38,6 +38,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/git', function (req, res) {
+    var secret = "alenka";
     var repo = "/var/www";
     req.on('data', function(chunk) {
         let sig = "sha1=" + crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex');
