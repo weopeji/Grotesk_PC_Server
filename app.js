@@ -1,4 +1,4 @@
-
+// Hello world!
 const express                       = require('express');
 const mongoose                      = require('mongoose');
 const bodyParser                    = require('body-parser');
@@ -14,7 +14,7 @@ const path                          = require('path');
 var crypto 			    = require('crypto');
 const exec 			    = require('child_process').exec;
 
-const io 	        = require('socket.io')();
+const io 	    = require('socket.io')();
 const server_http   = require('http').createServer(app);
 
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -22,7 +22,7 @@ mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log(`Mongo Db Connect to ${mongoUri}`);
         server_http.listen(appPort,
             () => {
-                console.log(`Р—Р°РЅСЏС‚ ${appPort} РїРѕСЂС‚...`);
+                console.log(`Р вЂ”Р В°Р Р…РЎРЏРЎвЂљ ${appPort} Р С—Р С•РЎР‚РЎвЂљ...`);
                 documentReadyRequire();
             }
         );
@@ -40,12 +40,14 @@ app.get('/', function (req, res) {
 
 app.post('/git', function (req, res) {
     var secret = "alenka";
-    var repo = "/var/www";
+    var repo = "/var/www/";
     req.on('data', function(chunk) {
         let sig = "sha1=" + crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex');
 
         if (req.headers['x-hub-signature'] == sig) {
-            exec('cd ' + repo + ' && git pull https://github.com/weopeji/Grotesk_PC_Server.git');
+		exec('cd ' + repo + ' && git pull https://github.com/weopeji/Grotesk_PC_Server.git', function(err, stdout, stderr) {
+        		console.log(stdout);
+		})
         }
     });
 
