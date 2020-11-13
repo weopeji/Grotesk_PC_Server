@@ -43,7 +43,7 @@ app.get('/test', function(req, res) {
 })
 
 app.get('/users', function (req, res, next) {
-    fs.open('/users/index.html', 'r', (err, fd) => {
+    fs.open(__dirname + '/users/index.html', 'r', (err, fd) => {
         //fd - это дескриптор файла
     })
 });
