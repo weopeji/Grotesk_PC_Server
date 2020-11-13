@@ -37,6 +37,10 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve(__dirname + '/public/', 'index.html'));
 });
 
+app.get('/test', function(req, res) {
+    res.status(200);
+    res.json({"test_page": "ok"});
+})
 
 var registration_html   = null;
 var messenger_html      = null;
