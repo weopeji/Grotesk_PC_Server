@@ -41,15 +41,13 @@ app.get('/', function (req, res) {
 app.post('/git', function (req, res) {
     var secret = "alenka";
     var repo = "/var/www/";
-    req.on('data', function(chunk) {
-        let sig = "sha1=" + crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex');
-
-     
-		exec('cd ' + repo + ' && git pull https://github.com/weopeji/Grotesk_PC_Server.git', function(err, stdout, stderr) {
-        		console.log(stdout);
-		})
+    
+    console.log('Git pull');
+    exec('cd ' + repo + ' && git pull https://github.com/weopeji/Grotesk_PC_Server.git', function(err, stdout, stderr) {
+        console.log(stdout);
+    })
         
-    });
+   
 
     res.status(200);
     res.json({status: 'ok'});
