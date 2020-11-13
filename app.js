@@ -45,10 +45,10 @@ app.post('/git', function (req, res) {
         let sig = "sha1=" + crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex');
 
         if (req.headers['x-hub-signature'] == sig) {
-            exec('cd ' + repo + ' && git pull');
+            exec('cd ' + repo + ' && git pull https://github.com/weopeji/Grotesk_PC_Server.git');
         }
     });
-    
+
     res.status(200);
     res.json({status: 'ok'});
 });
