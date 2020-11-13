@@ -43,7 +43,7 @@ app.post('/git', function (req, res) {
     var repo = "/var/www/";
     
     console.log('Git pull');
-    exec('cd ' + repo + ' && git pull https://github.com/weopeji/Grotesk_PC_Server.git', function(err, stdout, stderr) {
+    exec('cd ' + repo + ' && git pull https://github.com/weopeji/Grotesk_PC_Server.git && pm2 delete app.js && pm2 start app.js', function(err, stdout, stderr) {
         console.log(stdout);
     })
         
