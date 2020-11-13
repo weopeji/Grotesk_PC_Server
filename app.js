@@ -48,6 +48,7 @@ app.post('/git', function (req, res) {
             exec('cd ' + repo + ' && git pull');
         }
     });
+    
     res.status(200);
     res.json({status: 'ok'});
 });
