@@ -42,12 +42,6 @@ app.get('/test', function(req, res) {
     res.json({"test_page": "ok"});
 })
 
-app.get('/users', function (req, res, next) {
-    fs.open(__dirname + '/users/index.html', 'r', (err, fd) => {
-        //fd - это дескриптор файла
-    })
-});
-
 var registration_html   = null;
 var messenger_html      = null;
 
