@@ -38,21 +38,6 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve(__dirname + '/public/', 'index.html'));
 });
 
-app.post('/git', function (req, res) {
-    var secret = "alenka";
-    var repo = "/var/www/";
-    
-    console.log('Git pull');
-    exec('cd ' + repo + ' && git pull https://github.com/weopeji/Grotesk_PC_Server.git && pm2 delete app.js && pm2 start app.js', function(err, stdout, stderr) {
-        console.log(stdout);
-    })
-        
-   
-
-    res.status(200);
-    res.json({status: 'ok'});
-});
-
 
 var registration_html   = null;
 var messenger_html      = null;
