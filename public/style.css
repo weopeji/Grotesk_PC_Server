@@ -99,3 +99,24 @@ html, body {
 .img_logo img {
     width: 100%;
 }
+
+.add_button {
+    width: 220px;
+    height: 45px;
+    background: rgb(243,109,34);
+    background: linear-gradient(90deg, rgba(243,109,34,1) 0%, rgba(248,159,27,1) 100%);
+    float: right;
+    margin-top: 65px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add_button img {
+    width: 20px;
+    transform: rotate(-90deg);
+}
