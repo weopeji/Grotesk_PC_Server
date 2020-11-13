@@ -9,7 +9,9 @@ const models                        = require('./models');
 const mkdirp                        = require('mkdirp');
 const { memory }                    = require('console');
 var fs                              = require('fs');
-const path                          = require('path')
+const path                          = require('path');
+var crypto 			    = require('crypto');
+const exec 			    = require('child_process').exec;
 
 const io 	        = require('socket.io')();
 const server_http   = require('http').createServer(app);
@@ -19,7 +21,7 @@ mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log(`Mongo Db Connect to ${mongoUri}`);
         server_http.listen(appPort,
             () => {
-                console.log(`Занят ${appPort} порт...`);
+                console.log(`Р—Р°РЅСЏС‚ ${appPort} РїРѕСЂС‚...`);
                 documentReadyRequire();
             }
         );
@@ -34,6 +36,20 @@ app.get('/', function (req, res) {
     res.status(200)
     res.sendFile(path.resolve(__dirname + '/public/', 'index.html'));
 });
+
+app.post('/git', function (req, res) {
+    var repo = "/var/www";
+    req.on('data', function(chunk) {
+        let sig = "sha1=" + crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex');
+
+        if (req.headers['x-hub-signature'] == sig) {
+            exec('cd ' + repo + ' && git pull');
+        }
+    });
+
+    res.end();
+});
+
 
 var registration_html   = null;
 var messenger_html      = null;
